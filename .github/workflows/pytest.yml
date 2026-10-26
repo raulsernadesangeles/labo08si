@@ -1,0 +1,33 @@
+﻿name: Pruebas Google ADK
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: laboratorio-adk-ucv
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Instalar Poetry
+        run: pipx install poetry==2.4.3
+
+      - name: Instalar dependencias
+        run: poetry install --no-root
+
+      - name: Ejecutar pruebas
+        run: poetry run python -m pytest -v
