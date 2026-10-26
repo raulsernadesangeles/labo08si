@@ -27,6 +27,8 @@ jobs:
         run: pipx install poetry==2.4.3
 
       - name: Instalar dependencias
+        env:
+        POETRY_INSTALLER_ONLY_BINARY: ":all:"
         run: poetry install --no-root
 
       - name: Ejecutar pruebas
