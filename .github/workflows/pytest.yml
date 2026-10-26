@@ -28,7 +28,7 @@ jobs:
 
       - name: Instalar dependencias
         env:
-        POETRY_INSTALLER_ONLY_BINARY: ":all:"
+          POETRY_INSTALLER_ONLY_BINARY: ":all:"
         run: poetry install --no-root
 
       - name: Ejecutar pruebas
